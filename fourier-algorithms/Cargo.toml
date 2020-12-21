@@ -27,4 +27,4 @@ alloc = []
 [dependencies]
 multiversion = { version = "0.6", default-features = false }
 num-traits = { version = "0.2", default-features = false, features = ["libm"] }
-num-complex = { version = "0.2", default-features = false }
+num-complex = { version = "0.3", default-features = false }

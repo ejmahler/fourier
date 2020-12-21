@@ -2,7 +2,7 @@
 //! crate provides low level implementations with a low-level API, so you are probably looking for
 //! the [`fourier`](../fourier/index.html) crate instead.
 #![cfg_attr(not(feature = "std"), no_std)]
-
+#![allow(unused)]
 mod twiddle;
 
 #[macro_use]
