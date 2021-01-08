@@ -11,7 +11,7 @@ fftw = { version = "0.6.2", default-features = false, features = ["system"] }
 fourier = { path = "../fourier" }
 num-complex = { version = "0.3", default-features = false }
 rand = "0.7"
-rustfft = "5.0.0-experimental.2"
+rustfft = "5"
 
 [[bench]]
 name = "fft_bench"

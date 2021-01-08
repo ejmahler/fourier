@@ -37,12 +37,17 @@ macro_rules! create_bench {
                 // });
 
                 // RustFFT
-                let rustfft = rustfft::FftPlanner::<$type>::new(!forward).plan_fft(size);
+                let transform = if forward {
+                    rustfft::FftDirection::Forward
+                } else {
+                    rustfft::FftDirection::Inverse
+                };
+                let rustfft = rustfft::FftPlanner::<$type>::new().plan_fft(size, transform);
                 group.bench_with_input(BenchmarkId::new("RustFFT", size), &input, |b, i| {
                     let mut buffer = Vec::new();
                     buffer.extend_from_slice(i);
                     let mut scratch =  vec![Complex::default(); rustfft.get_inplace_scratch_len()];
-                    b.iter(|| rustfft.process_inplace_with_scratch(&mut buffer, &mut scratch))
+                    b.iter(|| rustfft.process_with_scratch(&mut buffer, &mut scratch))
                 });
 
                 // FFTW
